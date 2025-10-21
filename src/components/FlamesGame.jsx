@@ -32,6 +32,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showPopupAd, setShowPopupAd] = useState(false);
   const [showResultPopup, setShowResultPopup] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const [calculationCount, setCalculationCount] = useState(0);
   const [resultLetter, setResultLetter] = useState(null);
   const [resultText, setResultText] = useState('');
@@ -163,21 +164,61 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
   }
 
 
-  async function handleShare() {
-    const shareText = `FLAMES Result: ${resultText} — ${name1} + ${name2}`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: 'FLAMES Result', text: shareText });
-      } catch (err) {
-        // user cancelled
-      }
-    } else {
-      try {
-        await navigator.clipboard.writeText(shareText);
-        alert('Result copied to clipboard! Share it with your friends!');
-      } catch (err) {
-        alert('Unable to share. Try copying manually: ' + shareText);
-      }
+  function handleShare() {
+    setShowShareModal(true);
+  }
+
+  function handleCloseShareModal() {
+    setShowShareModal(false);
+  }
+
+  function getShareText() {
+    return `🔥 FLAMES Result: ${name1} & ${name2} = ${resultLetter} (${getResultPhrase(resultLetter).title}) - ${resultText}`;
+  }
+
+  function getShareUrl() {
+    return window.location.href;
+  }
+
+  function shareToSocial(platform) {
+    const shareText = getShareText();
+    const shareUrl = getShareUrl();
+    const encodedText = encodeURIComponent(shareText);
+    const encodedUrl = encodeURIComponent(shareUrl);
+    
+    let shareLink = '';
+    
+    switch(platform) {
+      case 'whatsapp':
+        shareLink = `https://wa.me/?text=${encodedText}%20${encodedUrl}`;
+        break;
+      case 'telegram':
+        shareLink = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+        break;
+      case 'facebook':
+        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
+        break;
+      case 'messenger':
+        shareLink = `https://www.facebook.com/dialog/send?link=${encodedUrl}&app_id=YOUR_APP_ID&redirect_uri=${encodedUrl}`;
+        break;
+      case 'instagram':
+        // Instagram doesn't support direct sharing, copy to clipboard
+        navigator.clipboard.writeText(`${shareText}\n${shareUrl}`).then(() => {
+          alert('Content copied! You can now paste it in your Instagram story or post.');
+        });
+        return;
+      case 'tiktok':
+        // TikTok doesn't support direct sharing, copy to clipboard
+        navigator.clipboard.writeText(`${shareText}\n${shareUrl}`).then(() => {
+          alert('Content copied! You can now paste it in your TikTok video description.');
+        });
+        return;
+      default:
+        return;
+    }
+    
+    if (shareLink) {
+      window.open(shareLink, '_blank', 'width=600,height=400');
     }
   }
 
@@ -614,6 +655,106 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
                   ✨ Close
                 </button>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Share Modal */}
+      {showShareModal && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative overflow-hidden"
+          >
+            {/* Background Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-cyan-100 to-yellow-100 opacity-50"></div>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-extrabold text-gradient mb-2">Share Your Result</h2>
+                <p className="text-sm text-zinc-600">Choose how you want to share your FLAMES result</p>
+              </div>
+
+              {/* Social Media Buttons */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {/* WhatsApp */}
+                <button
+                  onClick={() => shareToSocial('whatsapp')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-green-500 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">💬</span>
+                  <span>WhatsApp</span>
+                </button>
+
+                {/* Telegram */}
+                <button
+                  onClick={() => shareToSocial('telegram')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-blue-500 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">✈️</span>
+                  <span>Telegram</span>
+                </button>
+
+                {/* Facebook */}
+                <button
+                  onClick={() => shareToSocial('facebook')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-blue-600 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">📘</span>
+                  <span>Facebook</span>
+                </button>
+
+                {/* Messenger */}
+                <button
+                  onClick={() => shareToSocial('messenger')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-blue-400 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">💌</span>
+                  <span>Messenger</span>
+                </button>
+
+                {/* Instagram */}
+                <button
+                  onClick={() => shareToSocial('instagram')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">📷</span>
+                  <span>Instagram</span>
+                </button>
+
+                {/* TikTok */}
+                <button
+                  onClick={() => shareToSocial('tiktok')}
+                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-black text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  <span className="text-2xl">🎵</span>
+                  <span>TikTok</span>
+                </button>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={handleCloseShareModal}
+                  className="flex-1 rounded-2xl px-4 py-3 bg-zinc-200 text-zinc-800 font-semibold hover:scale-105 transition-transform"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(`${getShareText()}\n${getShareUrl()}`).then(() => {
+                      alert('Result copied to clipboard!');
+                      handleCloseShareModal();
+                    });
+                  }}
+                  className="flex-1 rounded-2xl px-4 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold hover:scale-105 transition-transform"
+                >
+                  Copy Link
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>
