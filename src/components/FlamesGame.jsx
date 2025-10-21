@@ -166,21 +166,21 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
-          className="w-full rounded-2xl px-5 py-3 bg-white/90 ring-2 ring-zinc-200 focus:ring-orange-300 outline-none placeholder:text-zinc-400 transition-all"
+          className="w-full rounded-2xl px-5 py-3 bg-white/90 ring-2 ring-zinc-200 focus:ring-purple-300 outline-none placeholder:text-zinc-400 transition-all"
         />
       </label>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#FFF6ED] to-[#FFF0F0] p-4 md:p-6">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-yellow-50 p-4 md:p-6">
       <div className="max-w-2xl mx-auto">
         {/* Main Game Container with Flaming Border */}
         <div className="flaming-border rounded-3xl">
           <div className="glassmorphism rounded-3xl shadow-2xl p-6 md:p-8">
             {/* Header */}
             <header className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#FF9F1C] to-[#FF6B6B] flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
                 🔥
               </div>
               <div>
@@ -190,7 +190,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
             </header>
 
             {/* Payment Status Display */}
-            <div className="mb-6 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl border border-orange-200">
+            <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl border border-purple-200">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">{hasPaid ? '✨' : '📺'}</span>
@@ -204,7 +204,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
                 {!hasPaid && (
                   <button
                     onClick={handlePayment}
-                    className="text-xs bg-gradient-to-r from-[#FF6B6B] to-[#FF9F1C] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-transform"
+                    className="text-xs bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-transform"
                   >
                     Remove Ads - ₱499
                   </button>
@@ -243,7 +243,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-red-600 bg-red-50 p-3 rounded-xl"
+                  className="text-sm text-purple-600 bg-purple-50 p-3 rounded-xl"
                 >
                   {error}
                 </motion.div>
@@ -252,7 +252,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               <div className="flex gap-3">
                 <button
                   type="submit"
-                  className="flex-1 rounded-2xl px-5 py-4 font-bold shadow-lg text-white bg-gradient-to-r from-[#FF6B6B] to-[#FF9F1C] hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                  className="flex-1 rounded-2xl px-5 py-4 font-bold shadow-lg text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-[1.02] active:scale-[0.98] transition-transform"
                   aria-disabled={phase === 'animating'}
                 >
                   {phase === 'animating' ? 'Calculating...' : 'Find Out'}
@@ -305,9 +305,9 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
                     transition={{ duration: 2, ease: 'easeInOut' }}
                     className="relative"
                   >
-                    {/* Spinning Flame Circle */}
-                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#FFD93D] to-[#FF6B6B] flex items-center justify-center shadow-2xl animate-flame">
-                      <div className="text-7xl animate-pulse">🔥</div>
+                    {/* Dramatic Pulsating Flame Circle */}
+                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-yellow-400 via-cyan-400 to-purple-500 flex items-center justify-center shadow-2xl animate-flame">
+                      <div className="text-7xl animate-glow">🔥</div>
                     </div>
                     {/* Orbiting letters */}
                     {['F', 'L', 'A', 'M', 'E', 'S'].map((letter, i) => (
@@ -393,19 +393,19 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               <div className="flex flex-wrap justify-center gap-4 text-xs">
                 <button 
                   onClick={() => alert('Privacy Policy: We collect minimal data (names for FLAMES calculation) and store it locally on your device. No personal information is shared with third parties.')}
-                  className="text-zinc-600 hover:text-orange-500 transition-colors underline"
+                  className="text-zinc-600 hover:text-purple-500 transition-colors underline"
                 >
                   Privacy Policy
                 </button>
                 <button 
                   onClick={() => alert('Terms of Service: This is a fun entertainment app. Results are not scientifically accurate. Use responsibly and have fun!')}
-                  className="text-zinc-600 hover:text-orange-500 transition-colors underline"
+                  className="text-zinc-600 hover:text-purple-500 transition-colors underline"
                 >
                   Terms of Service
                 </button>
                 <button 
                   onClick={() => alert('Contact: For support or feedback, please reach out through the app store or contact the development team.')}
-                  className="text-zinc-600 hover:text-orange-500 transition-colors underline"
+                  className="text-zinc-600 hover:text-purple-500 transition-colors underline"
                 >
                   Contact
                 </button>
@@ -430,7 +430,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               <p className="text-zinc-600">Get unlimited FLAMES calculations without any ads!</p>
             </div>
 
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 mb-6 border border-orange-200">
+            <div className="bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl p-6 mb-6 border border-purple-200">
               <div className="text-center">
                 <p className="text-sm text-zinc-600 mb-2">One-time payment</p>
                 <p className="text-4xl font-extrabold text-gradient">₱499</p>
@@ -466,7 +466,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </button>
               <button
                 onClick={handlePaymentSuccess}
-                className="flex-1 rounded-2xl px-5 py-3 font-bold text-white bg-gradient-to-r from-[#FF6B6B] to-[#FF9F1C] hover:scale-[1.02] transition-transform"
+                className="flex-1 rounded-2xl px-5 py-3 font-bold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-[1.02] transition-transform"
               >
                 Pay ₱499
               </button>
@@ -514,7 +514,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </button>
               <button
                 onClick={handlePayment}
-                className="flex-1 rounded-2xl px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-[#FF6B6B] to-[#FF9F1C] hover:scale-[1.02] transition-transform"
+                className="flex-1 rounded-2xl px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-[1.02] transition-transform"
               >
                 Remove Ads - ₱499
               </button>
@@ -533,47 +533,25 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
             className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative overflow-hidden"
           >
             {/* Fire Background Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-red-100 to-yellow-100 opacity-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-cyan-100 to-yellow-100 opacity-50"></div>
             
-            {/* Phoenix Animation */}
-            <motion.div
-              className="absolute top-4 right-4 text-4xl"
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
+            {/* Static Phoenix */}
+            <div className="absolute top-4 right-4 text-4xl">
               🔥
-            </motion.div>
+            </div>
 
-            {/* Fire Particles */}
+            {/* Static Fire Particles */}
             {[...Array(8)].map((_, i) => (
-              <motion.div
+              <div
                 key={i}
                 className="absolute text-2xl"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
                 }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 1, 0.3],
-                  scale: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.3,
-                  ease: "easeInOut",
-                }}
               >
                 🔥
-              </motion.div>
+              </div>
             ))}
 
             {/* Result Content */}
@@ -582,7 +560,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.3, type: 'spring' }}
-                className="inline-flex items-center justify-center rounded-full w-24 h-24 mx-auto bg-gradient-to-br from-[#FF6B6B] to-[#FF9F1C] text-white text-4xl font-extrabold shadow-2xl mb-4"
+                className="inline-flex items-center justify-center rounded-full w-24 h-24 mx-auto bg-gradient-to-br from-purple-500 to-cyan-500 text-white text-4xl font-extrabold shadow-2xl mb-4"
               >
                 {resultLetter}
               </motion.div>

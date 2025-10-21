@@ -20,7 +20,7 @@ export default function IntroAnimation({ onComplete }) {
   const dieFaces = ['F', 'L', 'A', 'M', 'E', 'S'];
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-br from-[#FF9F1C] via-[#FF6B6B] to-[#FFD93D] flex items-center justify-center">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-purple-500 via-cyan-500 to-yellow-400 flex items-center justify-center">
       {/* Flaming Background Effect */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(12)].map((_, i) => (
@@ -101,7 +101,7 @@ export default function IntroAnimation({ onComplete }) {
             return (
               <motion.div
                 key={index}
-                className="absolute w-40 h-40 bg-gradient-to-br from-white to-gray-100 rounded-2xl flex items-center justify-center shadow-2xl border-4 border-orange-300"
+                className="absolute w-40 h-40 bg-gradient-to-br from-white to-gray-100 rounded-2xl flex items-center justify-center shadow-2xl border-4 border-purple-300"
                 style={{
                   ...positions[index],
                   transform: `translateZ(${positions[index].translateZ})`,
