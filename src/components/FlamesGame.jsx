@@ -1,5 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Move InputField outside the component to prevent recreation
+const InputField = React.memo(({ label, value, setValue, placeholder }) => {
+  const handleChange = useCallback((e) => {
+    setValue(e.target.value);
+  }, [setValue]);
+
+  return (
+    <div className="w-full">
+      <label className="block text-sm font-semibold text-zinc-700 mb-2">{label}</label>
+      <input
+        type="text"
+        aria-label={label}
+        value={value}
+        onChange={handleChange}
+        placeholder={placeholder}
+        className="w-full rounded-2xl px-5 py-3 bg-white/90 ring-2 ring-zinc-200 focus:ring-purple-300 focus:ring-2 outline-none transition-all placeholder:text-zinc-400"
+        autoComplete="off"
+      />
+    </div>
+  );
+});
+
+InputField.displayName = 'InputField';
 
 export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
   const [name1, setName1] = useState('');
@@ -157,20 +181,6 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
     }
   }
 
-  function InputField({ label, value, setValue, placeholder }) {
-    return (
-      <label className="w-full">
-        <div className="text-sm font-semibold text-zinc-700 mb-2">{label}</div>
-        <input
-          aria-label={label}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder={placeholder}
-          className="w-full rounded-2xl px-5 py-3 bg-white/90 ring-2 ring-zinc-200 focus:ring-purple-300 outline-none placeholder:text-zinc-400 transition-all"
-        />
-      </label>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-yellow-50 p-4 md:p-6">
@@ -227,12 +237,14 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4 mb-6">
               <InputField 
+                key="name1"
                 label="Your Name" 
                 value={name1} 
                 setValue={setName1} 
                 placeholder="e.g. Alex" 
               />
               <InputField 
+                key="name2"
                 label="Target Name" 
                 value={name2} 
                 setValue={setName2} 
