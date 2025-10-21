@@ -25,11 +25,10 @@ const InputField = React.memo(({ label, value, setValue, placeholder }) => {
 
 InputField.displayName = 'InputField';
 
-export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
+export default function FlamesGame() {
   const [name1, setName1] = useState('');
   const [name2, setName2] = useState('');
   const [phase, setPhase] = useState('idle'); // idle | animating | revealed
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showPopupAd, setShowPopupAd] = useState(false);
   const [showResultPopup, setShowResultPopup] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -40,27 +39,25 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
   const [error, setError] = useState('');
 
 
-  // Initialize AdSense ads (only if user hasn't paid)
+  // Initialize AdSense ads
   useEffect(() => {
-    if (!hasPaid) {
-      try {
-        if (window.adsbygoogle) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
-      } catch (err) {
-        console.log('AdSense not available:', err);
+    try {
+      if (window.adsbygoogle) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
+    } catch (err) {
+      console.log('AdSense not available:', err);
     }
-  }, [hasPaid]);
+  }, []);
 
-  // Show popup ad after every 2 calculations for non-paying users
+  // Show popup ad after every 2 calculations
   useEffect(() => {
-    if (!hasPaid && calculationCount > 0 && calculationCount % 2 === 0) {
+    if (calculationCount > 0 && calculationCount % 2 === 0) {
       setTimeout(() => {
         setShowPopupAd(true);
       }, 3000); // Show popup 3 seconds after result
     }
-  }, [calculationCount, hasPaid]);
+  }, [calculationCount]);
 
   // Josephus-style FLAMES implementation
   function computeFlames(n) {
@@ -136,7 +133,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
       setShowTransitionVideo(false);
       setShowResultPopup(true);
       
-      // Increment calculation count (triggers popup ads for non-paying users)
+      // Increment calculation count (triggers popup ads)
       setCalculationCount(prev => prev + 1);
     }, 3000); // Video duration
   }
@@ -150,16 +147,6 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
     setError('');
   }
 
-  function handlePayment() {
-    setShowPaymentModal(true);
-  }
-
-  function handlePaymentSuccess() {
-    setShowPaymentModal(false);
-    setShowPopupAd(false);
-    onPaymentSuccess();
-    alert('Payment successful! Ads have been removed. Enjoy your ad-free experience! 🎉');
-  }
 
   function handleClosePopupAd() {
     setShowPopupAd(false);
@@ -246,40 +233,16 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </div>
             </header>
 
-            {/* Payment Status Display - Only show for free users */}
-            {!hasPaid && (
-              <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl border border-purple-200">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl">📺</span>
-                    <div>
-                      <p className="text-xs text-zinc-600">Status</p>
-                      <p className="text-xl font-extrabold text-gradient">
-                        Free with Ads
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={handlePayment}
-                    className="text-xs bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-transform"
-                  >
-                    Remove Ads - ₱499
-                  </button>
-                </div>
-              </div>
-            )}
 
-            {/* Top Banner Ad (728×90) - Only show if not paid */}
-            {!hasPaid && (
-              <div className="mb-6 flex justify-center">
-                <ins className="adsbygoogle"
-                     style={{display: 'block'}}
-                     data-ad-client="ca-pub-XXXX"
-                     data-ad-slot="XXXXXXXXXX"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-              </div>
-            )}
+            {/* Top Banner Ad (728×90) */}
+            <div className="mb-6 flex justify-center">
+              <ins className="adsbygoogle"
+                   style={{display: 'block'}}
+                   data-ad-client="ca-pub-XXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+            </div>
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4 mb-6">
@@ -327,17 +290,15 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </div>
             </form>
 
-            {/* In-Article Ad (after form) - Only show if not paid */}
-            {!hasPaid && (
-              <div className="mb-6 flex justify-center">
-                <ins className="adsbygoogle"
-                     style={{display: 'block'}}
-                     data-ad-client="ca-pub-XXXX"
-                     data-ad-slot="XXXXXXXXXX"
-                     data-ad-format="rectangle"
-                     data-full-width-responsive="true"></ins>
-              </div>
-            )}
+            {/* In-Article Ad (after form) */}
+            <div className="mb-6 flex justify-center">
+              <ins className="adsbygoogle"
+                   style={{display: 'block'}}
+                   data-ad-client="ca-pub-XXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="rectangle"
+                   data-full-width-responsive="true"></ins>
+            </div>
 
             {/* Animation area */}
             <div className="min-h-[300px] flex items-center justify-center">
@@ -432,17 +393,15 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               ))}
             </div>
 
-            {/* Bottom Ad (responsive) - Only show if not paid */}
-            {!hasPaid && (
-              <div className="mt-6 mb-4 flex justify-center">
-                <ins className="adsbygoogle"
-                     style={{display: 'block'}}
-                     data-ad-client="ca-pub-XXXX"
-                     data-ad-slot="XXXXXXXXXX"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-              </div>
-            )}
+            {/* Bottom Ad (responsive) */}
+            <div className="mt-6 mb-4 flex justify-center">
+              <ins className="adsbygoogle"
+                   style={{display: 'block'}}
+                   data-ad-client="ca-pub-XXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+            </div>
 
             {/* Footer */}
             <footer className="mt-6 text-xs text-zinc-500 text-center">
@@ -474,72 +433,9 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
         </div>
       </div>
 
-      {/* Payment Modal */}
-      {showPaymentModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl"
-          >
-            <div className="text-center mb-6">
-              <div className="text-6xl mb-4">💎</div>
-              <h2 className="text-2xl font-bold text-zinc-800 mb-2">Remove Ads</h2>
-              <p className="text-zinc-600">Get unlimited FLAMES calculations without any ads!</p>
-            </div>
 
-            <div className="bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl p-6 mb-6 border border-purple-200">
-              <div className="text-center">
-                <p className="text-sm text-zinc-600 mb-2">One-time payment</p>
-                <p className="text-4xl font-extrabold text-gradient">₱499</p>
-                <p className="text-xs text-zinc-500 mt-2">Lifetime ad-free access</p>
-              </div>
-            </div>
-
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-green-500">✓</span>
-                <span>No more banner ads</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-green-500">✓</span>
-                <span>No popup interruptions</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-green-500">✓</span>
-                <span>Unlimited FLAMES calculations</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-green-500">✓</span>
-                <span>Premium experience</span>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowPaymentModal(false)}
-                className="flex-1 rounded-2xl px-5 py-3 font-semibold text-zinc-600 bg-zinc-100 hover:bg-zinc-200 transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handlePaymentSuccess}
-                className="flex-1 rounded-2xl px-5 py-3 font-bold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-[1.02] transition-transform"
-              >
-                Pay ₱499
-              </button>
-            </div>
-
-            <p className="text-xs text-zinc-500 text-center mt-4">
-              Payment will be processed via Wise integration
-            </p>
-          </motion.div>
-        </div>
-      )}
-
-      {/* Popup Ad for non-paying users */}
-      {showPopupAd && !hasPaid && (
+      {/* Popup Ad */}
+      {showPopupAd && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -551,7 +447,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               <div className="text-4xl mb-3">📺</div>
               <h3 className="text-lg font-bold text-zinc-800 mb-2">Advertisement</h3>
               <p className="text-sm text-zinc-600 mb-4">
-                Support us by watching this quick ad, or upgrade to Premium to remove all ads!
+                Support us by watching this quick ad!
               </p>
             </div>
 
@@ -564,18 +460,12 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex justify-center">
               <button
                 onClick={handleClosePopupAd}
-                className="flex-1 rounded-2xl px-4 py-2 text-sm font-semibold text-zinc-600 bg-zinc-100 hover:bg-zinc-200 transition-colors"
+                className="rounded-2xl px-6 py-2 text-sm font-semibold text-zinc-600 bg-zinc-100 hover:bg-zinc-200 transition-colors"
               >
                 Skip Ad
-              </button>
-              <button
-                onClick={handlePayment}
-                className="flex-1 rounded-2xl px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-[1.02] transition-transform"
-              >
-                Remove Ads - ₱499
               </button>
             </div>
           </motion.div>
