@@ -238,7 +238,7 @@ export default function FlamesGame() {
             <div className="mb-6 flex justify-center">
               <ins className="adsbygoogle"
                    style={{display: 'block'}}
-                   data-ad-client="ca-pub-XXXX"
+                   data-ad-client="ca-pub-6715133623951744"
                    data-ad-slot="XXXXXXXXXX"
                    data-ad-format="auto"
                    data-full-width-responsive="true"></ins>
@@ -294,7 +294,7 @@ export default function FlamesGame() {
             <div className="mb-6 flex justify-center">
               <ins className="adsbygoogle"
                    style={{display: 'block'}}
-                   data-ad-client="ca-pub-XXXX"
+                   data-ad-client="ca-pub-6715133623951744"
                    data-ad-slot="XXXXXXXXXX"
                    data-ad-format="rectangle"
                    data-full-width-responsive="true"></ins>
@@ -397,7 +397,7 @@ export default function FlamesGame() {
             <div className="mt-6 mb-4 flex justify-center">
               <ins className="adsbygoogle"
                    style={{display: 'block'}}
-                   data-ad-client="ca-pub-XXXX"
+                   data-ad-client="ca-pub-6715133623951744"
                    data-ad-slot="XXXXXXXXXX"
                    data-ad-format="auto"
                    data-full-width-responsive="true"></ins>
