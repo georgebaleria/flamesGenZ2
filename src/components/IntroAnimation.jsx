@@ -43,7 +43,7 @@ export default function IntroAnimation({ onComplete }) {
             className="text-white mb-2 md:mb-4"
             style={{
               fontFamily: 'Open Sans, sans-serif',
-              fontSize: 'clamp(100px, 15vw, 300px)',
+              fontSize: 'clamp(70px, 12vw, 300px)',
               fontWeight: 400,
               lineHeight: 0.9,
               textShadow: '0 0 20px rgba(0,0,0,0.8)',
