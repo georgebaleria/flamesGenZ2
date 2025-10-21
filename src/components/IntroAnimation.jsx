@@ -43,7 +43,7 @@ export default function IntroAnimation({ onComplete }) {
             className="text-white mb-2 md:mb-4"
             style={{
               fontFamily: 'Open Sans, sans-serif',
-              fontSize: 'clamp(120px, 25vw, 400px)',
+              fontSize: 'clamp(100px, 15vw, 300px)',
               fontWeight: 400,
               lineHeight: 0.9,
               textShadow: '0 0 20px rgba(0,0,0,0.8)',
@@ -57,7 +57,7 @@ export default function IntroAnimation({ onComplete }) {
             className="text-white"
             style={{
               fontFamily: 'Open Sans, sans-serif',
-              fontSize: 'clamp(30px, 6vw, 100px)',
+              fontSize: 'clamp(30px, 5vw, 100px)',
               fontWeight: 100,
               lineHeight: 1,
               textShadow: '0 0 10px rgba(0,0,0,0.8)',
