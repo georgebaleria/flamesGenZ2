@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import IntroAnimation from './components/IntroAnimation';
 import FlamesGame from './components/FlamesGame';
 
@@ -19,6 +20,7 @@ function App() {
           <FlamesGame key="game" />
         )}
       </AnimatePresence>
+      <SpeedInsights />
     </div>
   );
 }
