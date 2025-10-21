@@ -33,6 +33,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
   const [showPopupAd, setShowPopupAd] = useState(false);
   const [showResultPopup, setShowResultPopup] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showTransitionVideo, setShowTransitionVideo] = useState(false);
   const [calculationCount, setCalculationCount] = useState(0);
   const [resultLetter, setResultLetter] = useState(null);
   const [resultText, setResultText] = useState('');
@@ -120,19 +121,24 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
     setResultLetter(null);
     setResultText('');
 
+    // Calculate result immediately
+    const letter = computeFlames(effectiveN);
+    const r = getResultPhrase(letter);
+    setResultLetter(letter);
+    setResultText(r.phrase);
+    setPhase('revealed');
+    
+    // Show transition video immediately
+    setShowTransitionVideo(true);
+    
+    // Show result popup after video completes
     setTimeout(() => {
-      const letter = computeFlames(effectiveN);
-      const r = getResultPhrase(letter);
-      setResultLetter(letter);
-      setResultText(r.phrase);
-      setPhase('revealed');
-      
-      // Show result popup with fire transition
+      setShowTransitionVideo(false);
       setShowResultPopup(true);
       
       // Increment calculation count (triggers popup ads for non-paying users)
       setCalculationCount(prev => prev + 1);
-    }, 2500);
+    }, 3000); // Video duration
   }
 
   function handleReset() {
@@ -240,28 +246,28 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
               </div>
             </header>
 
-            {/* Payment Status Display */}
-            <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl border border-purple-200">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{hasPaid ? '✨' : '📺'}</span>
-                  <div>
-                    <p className="text-xs text-zinc-600">Status</p>
-                    <p className="text-xl font-extrabold text-gradient">
-                      {hasPaid ? 'Ad-Free' : 'Free with Ads'}
-                    </p>
+            {/* Payment Status Display - Only show for free users */}
+            {!hasPaid && (
+              <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-2xl border border-purple-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">📺</span>
+                    <div>
+                      <p className="text-xs text-zinc-600">Status</p>
+                      <p className="text-xl font-extrabold text-gradient">
+                        Free with Ads
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {!hasPaid && (
                   <button
                     onClick={handlePayment}
                     className="text-xs bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-transform"
                   >
                     Remove Ads - ₱499
                   </button>
-                )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Top Banner Ad (728×90) - Only show if not paid */}
             {!hasPaid && (
@@ -576,6 +582,31 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
         </div>
       )}
 
+      {/* Transition Video */}
+      {showTransitionVideo && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+          <video
+            autoPlay
+            muted
+            loop={false}
+            onEnded={() => {
+              setShowTransitionVideo(false);
+              setShowResultPopup(true);
+            }}
+            className="w-full h-full object-cover opacity-50"
+          >
+            <source src="/genzfire.mp4" type="video/mp4" />
+            {/* Fallback if video fails */}
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <h1 className="text-6xl font-extrabold text-white mb-4">FLAMES</h1>
+                <p className="text-xl text-white/90">Discover Your Destiny</p>
+              </div>
+            </div>
+          </video>
+        </div>
+      )}
+
       {/* Result Popup with Fire Transition and Phoenix */}
       {showResultPopup && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
@@ -589,7 +620,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
             <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-cyan-100 to-yellow-100 opacity-50"></div>
             
             {/* Static Phoenix */}
-            <div className="absolute top-4 right-4 text-4xl">
+            <div className="absolute top-4 right-4 text-4xl opacity-50 z-0">
               🔥
             </div>
 
@@ -597,7 +628,7 @@ export default function FlamesGame({ hasPaid, onPaymentSuccess }) {
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
-                className="absolute text-2xl"
+                className="absolute text-2xl opacity-50 z-0"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
