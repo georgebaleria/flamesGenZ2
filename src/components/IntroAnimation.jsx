@@ -24,6 +24,14 @@ export default function IntroAnimation({ onComplete }) {
         muted
         loop={false}
         onEnded={onComplete}
+        onError={(e) => {
+          console.error('Video loading error:', e);
+          console.log('Video src:', e.target.src);
+          onComplete(); // Fallback to complete if video fails
+        }}
+        onLoadStart={() => console.log('Video loading started')}
+        onCanPlay={() => console.log('Video can play')}
+        onLoadedData={() => console.log('Video data loaded')}
         className="w-full h-full object-cover"
       >
         <source src="/genzfire.mp4" type="video/mp4" />

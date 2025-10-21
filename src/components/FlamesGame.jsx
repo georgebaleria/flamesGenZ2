@@ -483,6 +483,15 @@ export default function FlamesGame() {
               setShowTransitionVideo(false);
               setShowResultPopup(true);
             }}
+            onError={(e) => {
+              console.error('Transition video loading error:', e);
+              console.log('Video src:', e.target.src);
+              setShowTransitionVideo(false);
+              setShowResultPopup(true);
+            }}
+            onLoadStart={() => console.log('Transition video loading started')}
+            onCanPlay={() => console.log('Transition video can play')}
+            onLoadedData={() => console.log('Transition video data loaded')}
             className="w-full h-full object-cover opacity-50"
           >
             <source src="/genzfire.mp4" type="video/mp4" />
