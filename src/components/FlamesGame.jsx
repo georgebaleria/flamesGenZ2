@@ -422,6 +422,12 @@ export default function FlamesGame() {
                   Terms of Service
                 </button>
                 <button 
+                  onClick={() => alert('About: Flames Check is a fun relationship calculator game that uses the classic FLAMES algorithm. Enter two names to discover if you\'re Friends, Lovers, Affectionate, Married, Enemies, or Sweethearts. This is for entertainment purposes only!')}
+                  className="text-zinc-600 hover:text-purple-500 transition-colors underline"
+                >
+                  About
+                </button>
+                <button 
                   onClick={() => alert('Contact: For support or feedback, please reach out through the app store or contact the development team.')}
                   className="text-zinc-600 hover:text-purple-500 transition-colors underline"
                 >
