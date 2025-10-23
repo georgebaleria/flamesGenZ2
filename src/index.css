@@ -150,5 +150,25 @@ All colors MUST be HSL.
   }
 }
 
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific styles */
+  video {
+    -webkit-playsinline: true;
+    -webkit-media-controls: none;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
 
+/* Ensure video plays inline on all iOS devices */
+video {
+  -webkit-playsinline: true;
+  -moz-playsinline: true;
+  -ms-playsinline: true;
+  playsinline: true;
+}
 
