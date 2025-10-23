@@ -38,6 +38,24 @@ export default function FlamesGame() {
   const [resultText, setResultText] = useState('');
   const [error, setError] = useState('');
 
+  // Content validation function
+  const hasSubstantialContent = () => {
+    // Check if page has substantial content
+    const sections = document.querySelectorAll('section');
+    const paragraphs = document.querySelectorAll('p');
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    
+    // Ensure minimum content requirements
+    return sections.length >= 4 && 
+           paragraphs.length >= 10 && 
+           headings.length >= 5;
+  };
+
+  // Page readiness validation
+  const isPageReady = () => {
+    return document.readyState === 'complete' && 
+           document.querySelectorAll('section').length > 0;
+  };
 
   // Initialize AdSense ads
   useEffect(() => {
@@ -50,12 +68,33 @@ export default function FlamesGame() {
     }
   }, []);
 
-  // Show popup ad after every 2 calculations
+  // Initialize AdSense ads when popup shows
   useEffect(() => {
-    if (calculationCount > 0 && calculationCount % 2 === 0) {
-      setTimeout(() => {
-        setShowPopupAd(true);
-      }, 3000); // Show popup 3 seconds after result
+    if (showPopupAd) {
+      try {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          if (window.adsbygoogle) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          }
+        }, 100);
+      } catch (err) {
+        console.log('AdSense popup initialization error:', err);
+      }
+    }
+  }, [showPopupAd]);
+
+  // Show popup ad after every 3 calculations (reduced frequency)
+  useEffect(() => {
+    if (calculationCount > 0 && calculationCount % 3 === 0) {
+      // Only show ads on content-rich pages that are fully loaded
+      if (hasSubstantialContent() && isPageReady()) {
+        setTimeout(() => {
+          setShowPopupAd(true);
+        }, 3000); // Show popup 3 seconds after result
+      } else {
+        console.log('Ad skipped: Insufficient content or page not ready');
+      }
     }
   }, [calculationCount]);
 
@@ -440,7 +479,7 @@ export default function FlamesGame() {
       </div>
 
 
-      {/* Popup Ad */}
+      {/* Popup Ad - Real AdSense Integration */}
       {showPopupAd && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
           <motion.div
@@ -457,16 +496,17 @@ export default function FlamesGame() {
               </p>
             </div>
 
-            {/* Mock Ad Content */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-4 mb-4 border border-blue-200">
-              <div className="text-center">
-                <div className="text-2xl mb-2">🎮</div>
-                <p className="text-sm font-semibold text-zinc-800">Try Our New Game!</p>
-                <p className="text-xs text-zinc-600">Download now and get 50% off!</p>
-              </div>
-            </div>
+            {/* Real AdSense Ad Unit */}
+            <ins 
+              className="adsbygoogle"
+              style={{display:'block'}}
+              data-ad-client="ca-pub-6715133623951744"
+              data-ad-slot="1234567890"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-4">
               <button
                 onClick={handleClosePopupAd}
                 className="rounded-2xl px-6 py-2 text-sm font-semibold text-zinc-600 bg-zinc-100 hover:bg-zinc-200 transition-colors"
