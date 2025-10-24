@@ -30,6 +30,12 @@ const IntroAnimation = ({ onComplete }) => {
     console.log('Video can play');
   };
 
+  // Add click handler to skip the intro
+  const handleVideoClick = () => {
+    console.log('Video clicked, skipping intro');
+    onComplete();
+  };
+
   // If video has error or timeout, show fallback
   if (videoError || timeoutReached) {
     return (
@@ -59,7 +65,8 @@ const IntroAnimation = ({ onComplete }) => {
         onCanPlay={handleVideoCanPlay}
         onLoadStart={() => console.log('Video loading started')}
         onLoadedData={() => console.log('Video data loaded')}
-        className="w-full h-full object-cover"
+        onClick={handleVideoClick}
+        className="w-full h-full object-cover cursor-pointer"
         preload="auto" // Help with loading
       >
         <source src="/genzfire.mp4" type="video/mp4" />
