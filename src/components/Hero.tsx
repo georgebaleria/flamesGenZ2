@@ -1,5 +1,5 @@
 import { FlamesCalculator } from "./FlamesCalculator";
-import logo from "@/assets/logo.png";
+
 export const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated gradient background */}
@@ -17,7 +17,17 @@ export const Hero = () => {
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Logo/Brand */}
           <div className="flex items-center justify-center gap-3 mb-6">
-            <img src={logo} alt="Flames Check Logo" className="w-12 h-12" />
+            <img 
+              src="/responsive/logo-md.webp" 
+              srcSet="/responsive/logo-sm.webp 48w, /responsive/logo-md.webp 96w, /responsive/logo-lg.webp 192w"
+              sizes="(max-width: 768px) 48px, 96px"
+              alt="Flames Check logo - Free love compatibility calculator for Gen Z relationships" 
+              title="Flames Check - Modern FLAMES Calculator"
+              width="48" 
+              height="48" 
+              loading="eager"
+              className="w-12 h-12" 
+            />
             <h1 className="text-3xl md:text-4xl font-black tracking-tight font-lato px-0 text-amber-400">Flames Check</h1>
           </div>
           
