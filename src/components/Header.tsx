@@ -16,20 +16,33 @@ export const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header className="bg-gradient-to-r from-purple-600 to-pink-600 shadow-lg sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img 
-              src="/responsive/logo-md.webp" 
-              alt="Flames Check logo - Free love compatibility calculator"
-              width="40"
-              height="40"
-              className="w-10 h-10"
-            />
-            <span className="text-white font-bold text-xl">Flames Check</span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-3 hover:scale-105 transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg p-1"
+              aria-label="Scroll to top of page"
+            >
+              <img 
+                src="/responsive/logo-md.webp" 
+                alt="Flames Check logo - Free love compatibility calculator"
+                width="40"
+                height="40"
+                className="w-10 h-10 hover:opacity-90 transition-opacity duration-200"
+              />
+              <span className="text-white font-bold text-xl hover:text-yellow-300 transition-colors duration-200">Flames Check</span>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
