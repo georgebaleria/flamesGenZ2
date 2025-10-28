@@ -22,7 +22,7 @@ export const CTASection = () => {
             variant="hero"
             size="xl"
             onClick={scrollToTop}
-            className="w-full md:w-auto md:min-w-[400px]"
+            className="w-full md:w-auto md:min-w-[400px] h-auto min-h-[56px] py-3 md:py-4"
           >
             🔥 FLAMES CHECK MY NAME NOW!
           </Button>
