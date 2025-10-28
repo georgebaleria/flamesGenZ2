@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Flames Check",
+  "url": "https://flamescheck.com",
+  "logo": "https://flamescheck.com/responsive/logo-md.webp",
+  "description": "Free FLAMES Calculator for love compatibility! Discover if you're friends, lovers, or soulmates. Try our viral Gen Z love test now - get instant results!",
+  "email": "flamescheck2025@gmail.com",
+  "sameAs": [
+    "https://www.tiktok.com/@flames.check"
+  ],
+  "foundingDate": "2025-10-28",
+  "founder": {
+    "@type": "Person",
+    "name": "Flames Check Team"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "flamescheck2025@gmail.com",
+    "contactType": "customer service"
+  }
+}

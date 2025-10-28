@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Flames Check",
+  "url": "https://flamescheck.com",
+  "description": "Free FLAMES Calculator for love compatibility! Discover if you're friends, lovers, or soulmates. Try our viral Gen Z love test now - get instant results!",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Flames Check",
+    "logo": "https://flamescheck.com/responsive/logo-md.webp"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://flamescheck.com/#faq?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "FLAMES Calculator",
+    "url": "https://flamescheck.com",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+}

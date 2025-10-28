@@ -1,0 +1,102 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Flames Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flames Check is a modern glow-up of the classic 90s FLAMES love game — powered by a mix of numerology and nostalgia. Just type two names, and we'll instantly reveal your relationship vibe: Love, Friendship, Affection, Marriage, Enemy, or Sibling. It's fast, fun, and totally free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Flames Check work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flames Check uses a simple yet calculated process that matches the letters in your names, runs them through our upgraded algorithm, and gives you a result that represents your connection energy. It's like a vibe calculator — fun enough to play with your crush, friends, or even your favorite celebrities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Flames Check result accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's meant for fun and self-discovery, not serious matchmaking. While the numerology adds a unique twist, Flames Check is designed to give you playful insights — so take it as entertainment, not absolute truth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Flames Check for anyone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Use it to check your vibe with: Your crush or partner, Your best friend or barkada, A classmate, ex, or even a celebrity. Basically, if there's a connection, you can test it!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do the FLAMES letters mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each letter stands for a different type of connection: L — Love: Mutual attraction or deeper connection. F — Friendship: Pure good vibes; your ride-or-die. A — Affection: A spark that's still growing. E — Enemy: Watch out for drama — maybe not your match. M — Marriage: The ultimate forever bond. S — Sibling: Loyal, platonic, and always there for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Celebrity Flames Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's a fun feature where you can test the FLAMES compatibility of your favorite celebrity couples — just for laughs or curiosity! Think: Taylor Swift & Travis Kelce? KathNiel? DonBelle? See what the algorithm says about their vibe!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Flames Check free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — 100% free. No sign-ups, no weird subscriptions, no hidden fees. Just drop the names, get your result, and share the tea."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my information safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Flames Check doesn't store your data, names, or results. Everything happens instantly in your browser — your secrets stay safe with you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share my Flames Check result on social media?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! After you get your result, you can easily screenshot or share it on TikTok, Instagram, Facebook, or with your group chat. Tag us @FlamesCheck so we can repost your results!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who created Flames Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flames Check was built by a small creative team passionate about combining nostalgic fun and modern tech — inspired by the Filipino schoolyard game we all loved, but redesigned for a global Gen Z audience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do people love Flames Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because it's fun, fast, and feels real. It helps you get clarity (or chaos) in a few seconds — without the stress of guessing what your connection means. Plus, it's totally shareable and main-character energy approved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Easy! Go to FlamesCheck.com, type your names, and hit Check My Name Now. In just seconds, your result will pop up — ready to share with the world."
+      }
+    }
+  ]
+}
