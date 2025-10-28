@@ -28,17 +28,17 @@ async function generateResponsiveImages() {
 
   // Generate responsive versions for carousel images
   const carouselSizes = [
-    { width: 400, height: 300, suffix: 'sm' },
-    { width: 800, height: 600, suffix: 'md' },
-    { width: 1200, height: 900, suffix: 'lg' }
+    { width: 400, suffix: 'sm' },    // Remove height to maintain aspect ratio
+    { width: 800, suffix: 'md' },    // Remove height to maintain aspect ratio  
+    { width: 1200, suffix: 'lg' }    // Remove height to maintain aspect ratio
   ];
 
   for (let i = 1; i <= 7; i++) {
     for (const size of carouselSizes) {
       await sharp(`src/assets/carousel-${i}.png`)
-        .resize(size.width, size.height, {
-          fit: 'cover',
-          position: 'center'
+        .resize(size.width, null, {  // null height = maintain aspect ratio
+          fit: 'inside',             // Change from 'cover' to 'inside'
+          withoutEnlargement: true   // Don't enlarge smaller images
         })
         .webp({ quality: 85 })
         .toFile(`public/responsive/carousel-${i}-${size.suffix}.webp`);

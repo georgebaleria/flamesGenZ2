@@ -83,9 +83,7 @@ export const CelebrityCarousel = () => {
                       sizes={image.sizes}
                       alt={image.alt}
                       title={image.title}
-                      width="800"
-                      height="600"
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto object-contain"
                       loading="lazy"
                       decoding="async"
                     />
