@@ -44,8 +44,13 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="container mx-auto px-4">
+      <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="container mx-auto">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+              Frequently Asked Questions (FAQ)
+            </h2>
+          </div>
           <FAQContent />
         </div>
       </section>

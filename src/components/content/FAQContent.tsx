@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export const FAQContent = () => {
   const faqs = [
     {
@@ -51,22 +58,22 @@ export const FAQContent = () => {
   ];
 
   return (
-    <div className="space-y-6 text-gray-700">
-      <div className="prose prose-lg max-w-none">
-        <h3 className="text-2xl font-bold text-gray-800 mb-6">Flames Check — Frequently Asked Questions (FAQ)</h3>
-        
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
-              <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-start gap-2">
-                <span className="text-purple-500">❓</span>
+    <div className="w-full max-w-4xl mx-auto">
+      <Accordion type="single" collapsible className="w-full">
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} value={`item-${index}`} className="bg-white border border-gray-200 rounded-xl px-6 mb-4 hover:shadow-md transition-shadow">
+            <AccordionTrigger className="text-left">
+              <span className="text-lg font-semibold text-gray-800 flex items-start gap-3">
+                <span className="text-purple-600 text-xl">❓</span>
                 {faq.question}
-              </h4>
-              <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+              </span>
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="text-gray-600 leading-relaxed pl-8">{faq.answer}</p>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </div>
   );
 };
