@@ -29,42 +29,44 @@ export const VideoSection = () => {
               className="relative group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
               {/* Video Container */}
-              <div className="relative aspect-[9/16] bg-gradient-to-br from-purple-100 to-pink-100">
-                {playingVideo === videoNum ? (
-                  <video
-                    className="w-full h-full object-cover"
-                    controls
-                    autoPlay
-                    playsInline
-                    preload="metadata"
-                  >
-                    <source src={`/video${videoNum}.mp4`} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
+              <div className="relative aspect-[9/16] bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden">
+                <video
+                  className={`w-full h-full object-cover ${playingVideo === videoNum ? 'block' : 'hidden'}`}
+                  controls
+                  autoPlay={playingVideo === videoNum}
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={`/video${videoNum}.mp4`} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {playingVideo !== videoNum && (
                   <>
-                    {/* Thumbnail Placeholder */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-                          <Play className="text-white ml-1" size={32} />
-                        </div>
-                        <p className="text-gray-600 font-semibold text-sm">
-                          Click to Play
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Click Overlay */}
+                    {/* Video Preview with Poster */}
+                    <video
+                      className="w-full h-full object-cover opacity-90"
+                      muted
+                      playsInline
+                      preload="metadata"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      <source src={`/video${videoNum}.mp4`} type="video/mp4" />
+                    </video>
+                    
+                    {/* Play Button Overlay */}
                     <button
                       onClick={() => handleVideoClick(videoNum)}
-                      className="absolute inset-0 w-full h-full bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                      className="absolute inset-0 w-full h-full flex items-center justify-center group"
                       aria-label={`Play video ${videoNum}`}
                     >
-                      <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-300">
-                        <Play className="text-white ml-2" size={40} />
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+                        <Play className="text-white ml-1" size={32} />
                       </div>
                     </button>
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </>
                 )}
               </div>

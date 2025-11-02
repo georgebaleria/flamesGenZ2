@@ -14,6 +14,36 @@ export const SocialProof = () => {
       result: "Sibling",
       emoji: "🏡",
     },
+    {
+      quote: "Y'all I did Flames Check with my ex just to be petty and got ENEMY. I was like nah that can't be right... but then I remembered the messy breakup and how we literally can't be in the same room. This app knew what I refused to admit for months 😂",
+      author: "Morgan T., 20",
+      result: "Enemy",
+      emoji: "🔪",
+    },
+    {
+      quote: "My boyfriend and I have been together for 2 years and everyone says we're perfect for each other. Did Flames Check out of curiosity and got MARRIAGE. I literally screamed!! This is THE sign y'all 🥹💍",
+      author: "Luna R., 22",
+      result: "Marriage",
+      emoji: "💍",
+    },
+    {
+      quote: "I've been crushing on my coworker for MONTHS but was too scared to make a move. Flames Check gave me LOVE and I was like okay universe, I see you! We're going on our third date this weekend and I owe it all to this app! 🎉",
+      author: "Alex P., 24",
+      result: "Love",
+      emoji: "🔥",
+    },
+    {
+      quote: "My college roommate and I got FRIENDSHIP and honestly it's so accurate. We're not romantically involved at all but we're literally ride or dies. This helped me understand our bond better. Highly recommend!",
+      author: "Sam D., 19",
+      result: "Friendship",
+      emoji: "🤝",
+    },
+    {
+      quote: "Did this with my celebrity crush (Taylor Swift & me obviously lol) and got AFFECTION. I know it's just for fun but honestly it made my day! This app is so entertaining and free which is the best part 💯",
+      author: "Emmy J., 17",
+      result: "Affection",
+      emoji: "💖",
+    },
   ];
 
   return (
@@ -54,7 +84,7 @@ export const SocialProof = () => {
           </h3>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
