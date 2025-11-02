@@ -53,14 +53,20 @@ export const Hero = () => {
             </div>
 
             {/* Right Column - Hero Image */}
-            <div className="flex justify-center md:justify-end">
-              <img 
-                src="/heropageimage.png" 
-                alt="Flames Check - Discover your relationship compatibility" 
-                title="Flames Check Hero Image"
-                className="max-w-full h-auto rounded-2xl shadow-2xl"
-                loading="eager"
-              />
+            <div className="flex justify-center md:justify-end items-center">
+              <picture>
+                <source srcSet="/optimized/heropageimage.webp" type="image/webp" />
+                <img 
+                  src="/heropageimage.png" 
+                  alt="Flames Check - Free FLAMES love compatibility calculator for Gen Z: Discover your relationship status with crushes, friends, and celebrities instantly. Try it now!" 
+                  title="Flames Check - Relationship Compatibility Calculator"
+                  width="600"
+                  height="600"
+                  className="w-full max-w-lg h-auto rounded-2xl shadow-2xl object-contain"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
             </div>
           </div>
 

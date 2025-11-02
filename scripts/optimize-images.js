@@ -68,6 +68,13 @@ async function optimizeAllImages() {
     { width: 512, height: 512, quality: 90 }
   );
 
+  // Optimize hero page image
+  await optimizeImage(
+    'public/heropageimage.png',
+    'public/optimized/heropageimage.webp',
+    { width: 800, height: 800, quality: 90 }
+  );
+
   console.log('\n🎉 Image optimization completed!');
 }
 
