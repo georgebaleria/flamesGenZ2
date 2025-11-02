@@ -1,6 +1,12 @@
 import { AlertTriangle } from "lucide-react";
 
 export const ProblemSection = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   const problems = [
     {
       title: "REFRESHING FOR CLUES AGAIN?",
@@ -118,12 +124,12 @@ export const ProblemSection = () => {
                   
                   {/* CTA Button */}
                   <div className="mt-8 flex justify-center">
-                    <a
-                      href="#calculator"
+                    <button
+                      onClick={scrollToTop}
                       className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-black text-lg uppercase tracking-wide px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
                     >
                       {item.cta}
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -136,12 +142,12 @@ export const ProblemSection = () => {
           <p className="text-3xl font-black mb-4">
             You need the <span className="text-gradient">real-deal answer</span> without the drama.
           </p>
-          <a
-            href="#calculator"
-            className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black text-xl uppercase tracking-wide px-12 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
+          <button
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black text-xl uppercase tracking-wide px-12 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
           >
             Get Your Flames Check Score Now →
-          </a>
+          </button>
         </div>
       </div>
     </section>

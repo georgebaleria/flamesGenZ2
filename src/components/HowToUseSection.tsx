@@ -1,4 +1,11 @@
 export const HowToUseSection = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const steps = [
     {
       number: 1,
@@ -107,12 +114,12 @@ export const HowToUseSection = () => {
           <p className="text-xl text-gray-800 font-semibold mb-4">
             Ready to discover your relationship vibe?
           </p>
-          <a
-            href="#calculator"
-            className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          <button
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Get Started Now →
-          </a>
+          </button>
         </div>
       </div>
     </section>

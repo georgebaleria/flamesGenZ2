@@ -2,6 +2,13 @@ import { Play } from "lucide-react";
 import { useState } from "react";
 
 export const VideoSection = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const videos = [
     { id: 3, couple: "Emma & Jake" },
     { id: 4, couple: "Sophia & Liam" },
@@ -104,12 +111,12 @@ export const VideoSection = () => {
           <p className="text-2xl font-black mb-6">
             Ready to discover your relationship vibe?
           </p>
-          <a
-            href="#calculator"
-            className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black text-xl uppercase tracking-wide px-12 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
+          <button
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black text-xl uppercase tracking-wide px-12 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
           >
             Try Flames Check Now →
-          </a>
+          </button>
         </div>
       </div>
     </section>
