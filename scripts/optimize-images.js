@@ -75,6 +75,25 @@ async function optimizeAllImages() {
     { width: 800, height: 800, quality: 90 }
   );
 
+  // Optimize pain point images
+  await optimizeImage(
+    'public/refreshingforclauseagain.png',
+    'public/optimized/refreshingforclauseagain.webp',
+    { width: 600, height: 900, quality: 85 }
+  );
+
+  await optimizeImage(
+    'public/groupchatconfessions.png',
+    'public/optimized/groupchatconfessions.webp',
+    { width: 600, height: 900, quality: 85 }
+  );
+
+  await optimizeImage(
+    'public/mindmovesonloop.png',
+    'public/optimized/mindmovesonloop.webp',
+    { width: 600, height: 900, quality: 85 }
+  );
+
   console.log('\n🎉 Image optimization completed!');
 }
 
