@@ -44,6 +44,18 @@ export const SocialProof = () => {
       result: "Affection",
       emoji: "💖",
     },
+    {
+      quote: "I was scared to check with my long-term crush because I didn't want to be disappointed. Got MARRIAGE and honestly teared up a bit. It gave me the confidence to finally tell them how I feel. This app is magic ✨",
+      author: "Riley M., 21",
+      result: "Marriage",
+      emoji: "💍",
+    },
+    {
+      quote: "My friends forced me to do Flames Check with my lab partner and we got LOVE. I was like okay maybe there IS something there. We went on a date and I've never felt this kind of connection before. Thank you Flames Check! 💕",
+      author: "Casey B., 23",
+      result: "Love",
+      emoji: "🔥",
+    },
   ];
 
   return (

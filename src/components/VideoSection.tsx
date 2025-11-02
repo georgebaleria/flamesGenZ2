@@ -2,11 +2,22 @@ import { Play } from "lucide-react";
 import { useState } from "react";
 
 export const VideoSection = () => {
-  const videos = Array.from({ length: 12 }, (_, i) => i + 1);
+  const videos = [
+    { id: 3, couple: "Emma & Jake" },
+    { id: 4, couple: "Sophia & Liam" },
+    { id: 5, couple: "Olivia & Noah" },
+    { id: 6, couple: "Ava & Mason" },
+    { id: 7, couple: "Isabella & Ethan" },
+    { id: 8, couple: "Mia & Logan" },
+    { id: 9, couple: "Charlotte & Lucas" },
+    { id: 10, couple: "Amelia & Henry" },
+    { id: 11, couple: "Harper & Benjamin" },
+    { id: 12, couple: "Zoe & Daniel" },
+  ];
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
-  const handleVideoClick = (videoNumber: number) => {
-    setPlayingVideo(videoNumber);
+  const handleVideoClick = (videoId: number) => {
+    setPlayingVideo(videoId);
   };
 
   return (
@@ -23,25 +34,25 @@ export const VideoSection = () => {
 
         {/* Video Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((videoNum) => (
+          {videos.map((video) => (
             <div
-              key={videoNum}
+              key={video.id}
               className="relative group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
               {/* Video Container */}
               <div className="relative aspect-[9/16] bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden">
                 <video
-                  className={`w-full h-full object-cover ${playingVideo === videoNum ? 'block' : 'hidden'}`}
+                  className={`w-full h-full object-cover ${playingVideo === video.id ? 'block' : 'hidden'}`}
                   controls
-                  autoPlay={playingVideo === videoNum}
+                  autoPlay={playingVideo === video.id}
                   playsInline
                   preload="metadata"
                 >
-                  <source src={`/video${videoNum}.mp4`} type="video/mp4" />
+                  <source src={`/video${video.id}.mp4`} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 
-                {playingVideo !== videoNum && (
+                {playingVideo !== video.id && (
                   <>
                     {/* Video Preview with Poster */}
                     <video
@@ -51,14 +62,14 @@ export const VideoSection = () => {
                       preload="metadata"
                       style={{ pointerEvents: 'none' }}
                     >
-                      <source src={`/video${videoNum}.mp4`} type="video/mp4" />
+                      <source src={`/video${video.id}.mp4`} type="video/mp4" />
                     </video>
                     
                     {/* Play Button Overlay */}
                     <button
-                      onClick={() => handleVideoClick(videoNum)}
+                      onClick={() => handleVideoClick(video.id)}
                       className="absolute inset-0 w-full h-full flex items-center justify-center group"
-                      aria-label={`Play video ${videoNum}`}
+                      aria-label={`Play ${video.couple} Flames Check video`}
                     >
                       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
                         <Play className="text-white ml-1" size={32} />
@@ -75,14 +86,14 @@ export const VideoSection = () => {
               <div className="p-4 bg-white">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold text-gray-600">
-                    Video #{videoNum}
+                    {video.couple}
                   </span>
                   <span className="text-xs font-bold text-purple-600">
                     🎬 Watch Now
                   </span>
                 </div>
                 <h3 className="font-bold text-gray-900">
-                  Flames Check User Experience
+                  Flames Check Experience
                 </h3>
               </div>
             </div>
