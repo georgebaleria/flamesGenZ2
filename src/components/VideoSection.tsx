@@ -12,7 +12,6 @@ export const VideoSection = () => {
     { id: 9, couple: "Charlotte & Lucas" },
     { id: 10, couple: "Amelia & Henry" },
     { id: 11, couple: "Harper & Benjamin" },
-    { id: 12, couple: "Zoe & Daniel" },
   ];
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
