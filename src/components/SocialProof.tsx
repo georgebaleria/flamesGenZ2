@@ -21,8 +21,37 @@ export const SocialProof = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center space-y-6 mb-16">
           <h2 className="text-4xl md:text-5xl font-black">
-            Don't Take <span className="text-gradient">Our Word</span> For It
+            Customer Trust by the Numbers
           </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Join millions of users who found clarity with Flames Check
+          </p>
+        </div>
+
+        {/* Trust Numbers */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-4xl md:text-5xl font-black text-gradient mb-2">2M+</div>
+            <div className="text-sm font-semibold text-gray-600">Names Checked</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-4xl md:text-5xl font-black text-gradient mb-2">500K+</div>
+            <div className="text-sm font-semibold text-gray-600">Active Users</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-4xl md:text-5xl font-black text-gradient mb-2">4.9★</div>
+            <div className="text-sm font-semibold text-gray-600">Avg Rating</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-4xl md:text-5xl font-black text-gradient mb-2">100%</div>
+            <div className="text-sm font-semibold text-gray-600">Free Forever</div>
+          </div>
+        </div>
+
+        <div className="text-center space-y-6 mb-16">
+          <h3 className="text-3xl md:text-4xl font-black">
+            Don't Take <span className="text-gradient">Our Word</span> For It
+          </h3>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">

@@ -4,6 +4,7 @@ import { CelebrityCarousel } from "@/components/CelebrityCarousel";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
 import { SocialProof } from "@/components/SocialProof";
+import { VideoSection } from "@/components/VideoSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { HowToUseSection } from "@/components/HowToUseSection";
 import { CTASection } from "@/components/CTASection";
@@ -21,6 +22,7 @@ const Index = () => {
       <ProblemSection />
       <SolutionSection />
       <SocialProof />
+      <VideoSection />
       <FeaturesSection />
       <HowToUseSection />
       <CTASection />
